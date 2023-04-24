@@ -2,35 +2,36 @@ import React, { useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import {
-  faGithub,
-  faLinkedin,
-  faFacebook,
-  faBlogger,
+	faGithub,
+	faLinkedin,
+	faFacebook,
+	faBlogger,
+	faMedium,
 } from "@fortawesome/free-brands-svg-icons";
 import { Box, HStack } from "@chakra-ui/react";
 import { useState } from "react";
 
 const socials = [
-  {
-    icon: faEnvelope,
-    url: "mailto: lebaneaustin2@gmail.com",
-  },
-  {
-    icon: faGithub,
-    url: "https://github.com/GoitsemangLebane",
-  },
-  {
-    icon: faLinkedin,
-    url: "https://www.linkedin.com/in/goitsemang-lebane-2aab28194",
-  },
-  {
-    icon: faFacebook,
-    url: "https://www.facebook.com/austie.lebane.7399",
-  },
-  {
-    icon: faBlogger,
-    url: "https://techigonic.liveblog365.com",
-  },
+	{
+		icon: faEnvelope,
+		url: "mailto: lmkekkk@gmail.com",
+	},
+	{
+		icon: faGithub,
+		url: "https://github.com/GoitsemangLebane",
+	},
+	{
+		icon: faLinkedin,
+		url: "https://github.com",
+	},
+	{
+		icon: faFacebook,
+		url: "https://www.facebook.com",
+	},
+	{
+		icon: faBlogger,
+		url: "https://techigonic.liveblog365.com",
+	},
 ];
 
 const Header = () => {
