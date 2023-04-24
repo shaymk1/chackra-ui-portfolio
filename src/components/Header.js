@@ -18,116 +18,121 @@ const socials = [
 	},
 	{
 		icon: faGithub,
-		url: "https://github.com/GoitsemangLebane",
+		url: "https://github.com",
 	},
 	{
 		icon: faLinkedin,
-		url: "https://github.com",
+		url: "https://linkedin.com",
 	},
 	{
 		icon: faFacebook,
 		url: "https://www.facebook.com",
 	},
+
+	// {
+	// 	icon: faBlogger,
+	// 	url: "https://techigonic.liveblog365.com",
+	// },
 	{
-		icon: faBlogger,
-		url: "https://techigonic.liveblog365.com",
+		icon: faTwitter,
+		url: "https://twitter.com",
 	},
 ];
 
 const Header = () => {
-  const ref = useRef(0);
-  const navRef = useRef(null);
-  const handleClick = (anchor) => () => {
-    const id = `${anchor}-section`;
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  };
-  const navRefSet = useRef("");
-  const [close, setClose] = useState(false);
+	const ref = useRef(0);
+	const navRef = useRef(null);
+	const handleClick = (anchor) => () => {
+		const id = `${anchor}-section`;
+		const element = document.getElementById(id);
+		if (element) {
+			element.scrollIntoView({
+				behavior: "smooth",
+				block: "start",
+			});
+		}
+	};
+	const navRefSet = useRef("");
+	const [close, setClose] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = (e) => {
-      const newScrollP = window.scrollY;
-      // console.log("ref", ref);
-      // console.log("newScrollP", newScrollP);
-      if (newScrollP - ref.current > 0) {
-        navRefSet.current = "Down";
-        // console.log("Down");
-      } else if (newScrollP - ref.current < 0) {
-        navRefSet.current = "Up";
-        // console.log("Up");
-      }
+	useEffect(() => {
+		const handleScroll = (e) => {
+			const newScrollP = window.scrollY;
+			// console.log("ref", ref);
+			// console.log("newScrollP", newScrollP);
+			if (newScrollP - ref.current > 0) {
+				navRefSet.current = "Down";
+				// console.log("Down");
+			} else if (newScrollP - ref.current < 0) {
+				navRefSet.current = "Up";
+				// console.log("Up");
+			}
 
-      setClose(navRefSet.current === "Down");
-      console.log("navRefSet.current", navRefSet.current);
-      ref.current = window.scrollY;
-    };
+			setClose(navRefSet.current === "Down");
+			console.log("navRefSet.current", navRefSet.current);
+			ref.current = window.scrollY;
+		};
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+		window.addEventListener("scroll", handleScroll);
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, []);
 
-  return (
-    <Box
-      ref={navRef}
-      position="fixed"
-      top={0}
-      left={0}
-      right={0}
-      style={
-        close
-          ? {
-              transform: `translate(${0}px, ${-200}px)`,
-              transitionProperty: "transform",
-              transitionDuration: ".3s",
-              transitionTimingFunction: "ease-in-out",
-            }
-          : {
-              transform: `translate(${0}px, ${0}px)`,
-              transitionProperty: "transform",
-              transitionDuration: ".3s",
-              transitionTimingFunction: "ease-in-out",
-            }
-      }
-      backgroundColor="#18181b"
-    >
-      {/* <SlideEx /> */}
-      <Box color="white" maxWidth="1280px" margin="0 auto">
-        <HStack
-          px={16}
-          py={4}
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <nav>
-            {socials.map((social) => {
-              return (
-                <a
-                  key={social.url}
-                  href={social.url}
-                  style={{ paddingRight: "1em" }}
-                >
-                  <FontAwesomeIcon icon={social.icon} size="2x" />
-                </a>
-              );
-            })}
-          </nav>
-          <nav>
-            <HStack spacing={8}>
-              <a onClick={handleClick("projects")}>Projects</a>
-              <a onClick={handleClick("contactme")}>Contact me</a>
-            </HStack>
-          </nav>
-        </HStack>
-      </Box>
-    </Box>
-  );
+	return (
+		<Box
+			ref={navRef}
+			position="fixed"
+			top={0}
+			left={0}
+			right={0}
+			style={
+				close
+					? {
+							transform: `translate(${0}px, ${-200}px)`,
+							transitionProperty: "transform",
+							transitionDuration: ".3s",
+							transitionTimingFunction: "ease-in-out",
+					  }
+					: {
+							transform: `translate(${0}px, ${0}px)`,
+							transitionProperty: "transform",
+							transitionDuration: ".3s",
+							transitionTimingFunction: "ease-in-out",
+					  }
+			}
+			backgroundColor="#18181b"
+		>
+			{/* <SlideEx /> */}
+			<Box color="white" maxWidth="1280px" margin="0 auto">
+				<HStack
+					px={16}
+					py={4}
+					justifyContent="space-between"
+					alignItems="center"
+				>
+					<nav>
+						{socials.map((social) => {
+							return (
+								<a
+									key={social.url}
+									href={social.url}
+									style={{ paddingRight: "1em" }}
+								>
+									<FontAwesomeIcon icon={social.icon} size="2x" />
+								</a>
+							);
+						})}
+					</nav>
+					<nav>
+						<HStack spacing={8}>
+							<a onClick={handleClick("projects")}>Projects</a>
+							<a onClick={handleClick("contactme")}>Contact me</a>
+						</HStack>
+					</nav>
+				</HStack>
+			</Box>
+		</Box>
+	);
 };
 export default Header;
